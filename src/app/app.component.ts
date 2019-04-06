@@ -23,4 +23,26 @@ export class AppComponent {
   getMobile(patient) {
     return patient.telecom.filter(phone => phone.use == 'mobile')[0].value;
   }
+
+  getActiveMeds(meds) {
+    const allMeds = [];
+    for (const resource of meds) {
+      for (let med of resource.entry) {
+        allMeds.push(med);
+      }
+    }
+    const activeMeds = allMeds.filter(med => med.resource.status == 'active');
+    return activeMeds;
+  }
+
+  getInactiveMeds(meds) {
+    const allMeds = [];
+    for (const resource of meds) {
+      for (let med of resource.entry) {
+        allMeds.push(med);
+      }
+    }
+    const inactiveMeds = allMeds.filter(med => med.resource.status != 'active');
+    return inactiveMeds;
+  }
 }
