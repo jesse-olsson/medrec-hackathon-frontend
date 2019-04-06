@@ -11,8 +11,9 @@
   <tr>
     <th>Medication</th>
     <th>Dose</th>
-    <th>Effective Start</th>
-    <th>Status</th>
+    <th>Date Prescribed</th>
+    <th>Prescription Active</th>
+    <th>Information Source</th>
   </tr>
 
   <tr *ngFor="let med of getActiveMeds(meds)">
@@ -20,6 +21,7 @@
     <td>{{formatDosage(med.resource.dosage)}}</td>
     <td>{{med.resource.effectivePeriod.start | date}}</td>
     <td>{{med.resource.status}}</td>
+    <td>{{med.resource.informationSource.reference}}</td>
   </tr>
 
 </table>
@@ -31,7 +33,8 @@
     <th>Medication</th>
     <th>Dose</th>
     <th>Effective Start</th>
-    <th>Status</th>
+    <th>Prescription Active</th>
+    <th>Information Source</th>
   </tr>
 
   <tr *ngFor="let med of getInactiveMeds(meds)">
@@ -39,5 +42,6 @@
     <td>{{formatDosage(med.resource.dosage)}}</td>
     <td>{{med.resource.effectivePeriod.start | date}}</td>
     <td>{{med.resource.status}}</td>
+    <td>{{med.resource.informationSource.reference}}</td>
   </tr>
 </table>
